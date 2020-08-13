@@ -1,0 +1,9 @@
+// REDUX ACTION TYPES
+export const TICK = "TICK";
+export const INCREMENT = "INCREMENT";
+export const DECREMENT = "DECREMENT";
+export const RESET = "RESET";
+
+export const FETCH_USER_LOADING = "FETCH_USER_LOADING";
+export const FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS";
+export const FETCH_USER_FAILURE = "FETCH_USER_FAILURE";
