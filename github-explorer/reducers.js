@@ -38,13 +38,17 @@ const timerReducer = (state = initialTimerState, { type, payload }) => {
 const initialGithubState = {
   loading: false,
   error: null,
-  response: null,
+  user: {},
+  followers: [],
+  repos: [],
 };
 
 // GITHUB REDUCER
 const githubReducer = (state = initialGithubState, { type, payload }) => {
   switch (type) {
     case types.FETCH_USER_LOADING:
+    case types.FETCH_FOLLOWERS_LOADING:
+    case types.FETCH_REPOS_LOADING:
       return {
         ...state,
         loading: true,
@@ -54,10 +58,26 @@ const githubReducer = (state = initialGithubState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        response: payload,
+        user: payload,
+      };
+
+    case types.FETCH_FOLLOWERS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        followers: payload,
+      };
+
+    case types.FETCH_REPOS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        repos: payload,
       };
 
     case types.FETCH_USER_FAILURE:
+    case types.FETCH_FOLLOWERS_FAILURE:
+    case types.FETCH_REPOS_FAILURE:
       return {
         ...state,
         loading: false,
