@@ -14,10 +14,13 @@ const UserCard = ({ user }) => {
             <Username>{`(${user.login})`}</Username>
           </Nametag>
           <Block>
-            <ExtLink href={user.blog}>website</ExtLink>
-            <ExtLink href={`https://twitter.com/${user.twitter_username}`}>
-              {`@${user.twitter_username}`}
-            </ExtLink>
+            {user.blog && <ExtLink href={user.blog}>website</ExtLink>}
+
+            {user.twitter_username && (
+              <ExtLink href={`https://twitter.com/${user.twitter_username}`}>
+                {`@${user.twitter_username}`}
+              </ExtLink>
+            )}
           </Block>
           <Block>
             <Text>{`${user.followers} followers`}</Text>
