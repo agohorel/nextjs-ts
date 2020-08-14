@@ -45,6 +45,7 @@ const Card = styled.div`
 
 const Avatar = styled.img`
   border-radius: 50%;
+  width: 200px;
   grid-column: span 4;
 `;
 
