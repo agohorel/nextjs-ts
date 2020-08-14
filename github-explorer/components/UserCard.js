@@ -39,12 +39,13 @@ export default UserCard;
 
 const CardContainer = styled.div`
   padding: ${({ theme: { measurements } }) => measurements.layoutPadding};
+  padding-bottom: 0;
 `;
 
 const Card = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 1rem;
+  grid-gap: ${({ theme: { measurements } }) => measurements.gridGap};
   align-items: baseline;
 `;
 

@@ -19,6 +19,6 @@ const FollowersContainer = styled.div`
   display: grid;
   max-width: 100vw;
   padding: ${({ theme: { measurements } }) => measurements.layoutPadding};
-  grid-gap: 2rem;
+  grid-gap: ${({ theme: { measurements } }) => measurements.gridGap};
   grid-template-columns: repeat(8, 1fr);
 `;

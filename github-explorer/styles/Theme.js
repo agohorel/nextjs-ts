@@ -25,6 +25,7 @@ const theme = {
     inputPadding: "4px 8px",
     buttonPadding: "6px 10px",
     layoutPadding: "6rem",
+    gridGap: "2rem",
   },
 };
 

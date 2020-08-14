@@ -24,6 +24,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: ${({ theme: { measurements } }) => measurements.layoutPadding};
+  padding-bottom: 0;
 `;
 
 const Title = styled.div`
