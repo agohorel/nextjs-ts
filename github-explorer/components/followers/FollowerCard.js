@@ -23,7 +23,7 @@ const Card = styled.div`
   align-items: center;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
   overflow: hidden;
-  transition: 0.2s ease-out all;
+  transition: 0.15s ease-out all;
 
   :hover img {
     transform: scale(1.1);
@@ -35,7 +35,7 @@ const Card = styled.div`
   }
 
   :hover {
-    transform: translateY(-2px);
+    transform: translateY(-10px);
   }
 `;
 
@@ -62,6 +62,6 @@ const Avatar = styled.img`
   width: 100%;
   border-radius: 3px;
   transition: 0.25s ease-out all;
-  filter: grayscale(1);
+  filter: grayscale(0.85);
   z-index: -100;
 `;
