@@ -13,7 +13,12 @@ const github = () => {
     <Layout>
       {github_data.loading && <p>LOADING...</p>}
 
-      {github_data.user && <UserCard user={github_data.user}></UserCard>}
+      {github_data.user && (
+        <UserCard
+          user={github_data.user}
+          commits={github_data.commits}
+        ></UserCard>
+      )}
 
       {github_data.followers && (
         <Followers followers={github_data.followers}></Followers>

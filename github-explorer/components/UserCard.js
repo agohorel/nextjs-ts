@@ -6,12 +6,13 @@ import {
   faUsers,
   faCodeBranch,
   faWindowMaximize,
+  faKeyboard,
 } from "@fortawesome/free-solid-svg-icons";
-import { faTwitterSquare } from "@fortawesome/free-brands-svg-icons";
+import { faTwitterSquare, faGitAlt } from "@fortawesome/free-brands-svg-icons";
 import ExtLink from "./library/ExtLink";
 import Icon from "./library/Icon";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, commits }) => {
   if (user.avatar_url) {
     return (
       <CardContainer>
@@ -22,35 +23,45 @@ const UserCard = ({ user }) => {
 
           {user.blog && (
             <ExtLink href={user.blog}>
-              <Icon icon={faWindowMaximize} size={"1.4rem"} /> website
+              <Icon icon={faWindowMaximize} size={"1x"} /> website
             </ExtLink>
           )}
 
           {user.twitter_username && (
             <ExtLink href={`https://twitter.com/${user.twitter_username}`}>
-              <Icon icon={faTwitterSquare} size={"1.4rem"} />{" "}
+              <Icon icon={faTwitterSquare} size={"1x"} />{" "}
               {`@${user.twitter_username}`}
             </ExtLink>
           )}
 
           <Text>
             {" "}
-            <Icon icon={faUsers} size={"1.4rem"} />{" "}
-            {`${user.followers} followers`}
+            <Icon icon={faUsers} size={"1x"} /> {`${user.followers} followers`}
           </Text>
 
           <Text>
-            <Icon icon={faUserFriends} size={"1.4rem"} />{" "}
+            <Icon icon={faUserFriends} size={"1x"} />{" "}
             {`${user.following} following`}
           </Text>
 
           <Text>
-            <Icon icon={faCodeBranch} size={"1.4rem"} />{" "}
+            <Icon icon={faCodeBranch} size={"1x"} />{" "}
             {`${user.public_repos} public repos`}
+          </Text>
+
+          <Text>
+            <Icon icon={faKeyboard} size={"1x"} />{" "}
+            {`${commits.commits} recent commits`}
+          </Text>
+
+          <Text>
+            <Icon icon={faGitAlt} size={"1x"} />{" "}
+            {`in ${Object.keys(commits.repos).length} repos`}
           </Text>
         </Card>
       </CardContainer>
     );
+    F;
   } else return null;
 };
 
