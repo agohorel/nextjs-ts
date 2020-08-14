@@ -4,49 +4,51 @@ import axiosWithAuth from "./utils/axiosWithAuth";
 export const fetchUser = (username) => async (dispatch) => {
   dispatch({ type: types.FETCH_USER_LOADING });
   try {
-    const res = await axiosWithAuth().get(`users/${username}`);
-    dispatch({ type: types.FETCH_USER_SUCCESS, payload: res.data });
+    const payload = await getUserData(username);
+
+    dispatch({ type: types.FETCH_USER_SUCCESS, payload });
   } catch (error) {
     console.error(error);
     dispatch({ type: types.FETCH_USER_FAILURE, payload: error });
   }
 };
 
-export const fetchUserFollowers = (username) => async (dispatch) => {
-  dispatch({ type: types.FETCH_FOLLOWERS_LOADING });
+export const fetchRandomUser = () => async (dispatch) => {
+  dispatch({ type: types.FETCH_RANDOM_USER_LOADING });
   try {
-    const res = await axiosWithAuth().get(`users/${username}/followers`);
-    dispatch({ type: types.FETCH_FOLLOWERS_SUCCESS, payload: res.data });
+    const random_index = Math.floor(Math.random() * 10000000);
+    const res = await axiosWithAuth().get(`users?since=${random_index}`);
+    const random_user = res.data[Math.floor(Math.random() * res.data.length)];
+
+    const payload = await getUserData(random_user.login);
+
+    console.log(random_user, payload);
+
+    dispatch({ type: types.FETCH_RANDOM_USER_SUCCESS, payload });
   } catch (error) {
     console.error(error);
-    dispatch({ type: types.FETCH_FOLLOWERS_FAILURE, payload: error });
+    dispatch({ type: types.FETCH_RANDOM_USER_FAILURE, payload: error });
   }
 };
 
-export const fetchUserRepos = (username) => async (dispatch) => {
-  dispatch({ type: types.FETCH_REPOS_LOADING });
-  try {
-    const res = await axiosWithAuth().get(
-      `users/${username}/repos?per_page=40&sort=updated&affiliation=owner,collaborator,organization_member`
-    );
-    dispatch({ type: types.FETCH_REPOS_SUCCESS, payload: res.data });
-  } catch (error) {
-    console.error(error);
-    dispatch({ type: types.FETCH_REPOS_FAILURE, payload: error });
-  }
-};
+// helpers
 
-export const fetchUserCommits = (username) => async (dispatch) => {
-  dispatch({ type: types.FETCH_COMMITS_LOADING });
-  try {
-    const res = await axiosWithAuth().get(`users/${username}/events`);
-    const commits = countCommits(res.data, username);
-    dispatch({ type: types.FETCH_COMMITS_SUCCESS, payload: commits });
-  } catch (error) {
-    console.error(error);
-    dispatch({ type: types.FETCH_COMMITS_FAILURE, payload: error });
-  }
-};
+async function getUserData(username) {
+  const user = await axiosWithAuth().get(`users/${username}`);
+  const followers = await axiosWithAuth().get(`users/${username}/followers`);
+  const repos = await axiosWithAuth().get(
+    `users/${username}/repos?per_page=40&sort=updated&affiliation=owner,collaborator,organization_member`
+  );
+  const events = await axiosWithAuth().get(`users/${username}/events`);
+  const commits = countCommits(events.data, username);
+
+  return {
+    user: user.data,
+    followers: followers.data,
+    repos: repos.data,
+    commits,
+  };
+}
 
 function countCommits(data, username) {
   const pushes = data.filter(
@@ -65,16 +67,3 @@ function countCommits(data, username) {
 
   return { commits, repos };
 }
-
-export const fetchRandomUser = () => async (dispatch) => {
-  dispatch({ type: types.FETCH_RANDOM_USER_LOADING });
-  try {
-    const random_index = Math.floor(Math.random() * 10000000);
-    const res = await axiosWithAuth().get(`users?since=${random_index}`);
-    const random_user = res.data[Math.floor(Math.random() * res.data.length)];
-    dispatch({ type: types.FETCH_RANDOM_USER_SUCCESS, payload: random_user });
-  } catch (error) {
-    console.error(error);
-    dispatch({ type: types.FETCH_RANDOM_USER_FAILURE, payload: error });
-  }
-};

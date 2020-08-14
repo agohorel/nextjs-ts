@@ -2,25 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
-import {
-  fetchUser,
-  fetchUserRepos,
-  fetchUserFollowers,
-  fetchUserCommits,
-} from "../../actions";
+import { fetchUser } from "../../actions";
 
 const FollowerCard = ({ follower }) => {
   const dispatch = useDispatch();
 
-  const searchUser = async (username) => {
-    dispatch(fetchUser(username));
-    dispatch(fetchUserRepos(username));
-    dispatch(fetchUserFollowers(username));
-    dispatch(fetchUserCommits(username));
-  };
-
   return (
-    <Card onClick={() => searchUser(follower.login)}>
+    <Card onClick={() => dispatch(fetchUser(follower.login))}>
       <Overlay>
         <Username>{follower.login}</Username>
       </Overlay>

@@ -1,37 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import {
-  fetchUser,
-  fetchUserRepos,
-  fetchUserFollowers,
-  fetchUserCommits,
-  fetchRandomUser,
-} from "../actions";
+import { fetchRandomUser } from "../actions";
 
 import Search from "./layout/Search";
 import Button from "./library/Button";
 
 const GetStarted = () => {
   const dispatch = useDispatch();
-  const random_user = useSelector((state) => state.github.random_user);
-
-  const searchRandomUser = async () => {
-    dispatch(fetchRandomUser());
-  };
-
-  useEffect(() => {
-    async function searchUser() {
-      dispatch(fetchUser(random_user.login));
-      dispatch(fetchUserRepos(random_user.login));
-      dispatch(fetchUserFollowers(random_user.login));
-      dispatch(fetchUserCommits(random_user.login));
-    }
-    if (random_user.login) {
-      searchUser();
-    }
-  }, [random_user]);
 
   return (
     <Container>
@@ -39,7 +16,7 @@ const GetStarted = () => {
         <CTA>Get started by searching for a GitHub user by name!</CTA>
         <Search></Search>
         <SubHeader>Or select a user at random:</SubHeader>
-        <div onClick={searchRandomUser}>
+        <div onClick={() => dispatch(fetchRandomUser())}>
           <Button>search random user</Button>
         </div>
       </Banner>

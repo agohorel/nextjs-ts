@@ -3,12 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
-import {
-  fetchUser,
-  fetchUserRepos,
-  fetchUserFollowers,
-  fetchUserCommits,
-} from "../../actions";
+import { fetchUser } from "../../actions";
 
 import Button from "../library/Button";
 
@@ -20,16 +15,9 @@ const Search = () => {
     setUsername(e.target.value);
   };
 
-  const searchUser = async (username) => {
-    dispatch(fetchUser(username));
-    dispatch(fetchUserRepos(username));
-    dispatch(fetchUserFollowers(username));
-    dispatch(fetchUserCommits(username));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchUser(username);
+    dispatch(fetchUser(username));
   };
 
   return (
