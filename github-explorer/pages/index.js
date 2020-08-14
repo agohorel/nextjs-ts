@@ -1,23 +1,42 @@
-import { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import Link from 'next/link'
-import { startClock } from '../actions'
-import Examples from '../components/examples'
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUser, fetchRepos, fetchUserFollowers } from "../actions";
 
-const Index = () => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(startClock())
-  }, [dispatch])
+import UserCard from "../components/UserCard";
+import Followers from "../components/followers/Followers";
+
+const github = () => {
+  const [username, setUsername] = useState("");
+  const github_data = useSelector((state) => state.github);
+  const dispatch = useDispatch();
+
+  console.log(github_data);
+
+  const handleInput = (e) => {
+    setUsername(e.target.value);
+  };
+
+  const searchUser = async (username) => {
+    dispatch(fetchUser(username));
+    dispatch(fetchRepos(username));
+    dispatch(fetchUserFollowers(username));
+  };
 
   return (
-    <>
-      <Examples />
-      <Link href="/show-redux-state">
-        <a>Click to see current Redux State</a>
-      </Link>
-    </>
-  )
-}
+    <div>
+      <label>search for github user by username</label>
+      <input id="username" onChange={handleInput} value={username}></input>
+      <button onClick={() => searchUser(username)}>search</button>
 
-export default Index
+      {github_data.loading && <p>LOADING...</p>}
+
+      {github_data.user && <UserCard user={github_data.user}></UserCard>}
+
+      {github_data.followers && (
+        <Followers followers={github_data.followers}></Followers>
+      )}
+    </div>
+  );
+};
+
+export default github;
