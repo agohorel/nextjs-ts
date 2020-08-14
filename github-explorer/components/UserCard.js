@@ -1,7 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
+import {
+  faUserFriends,
+  faUsers,
+  faCodeBranch,
+  faWindowMaximize,
+} from "@fortawesome/free-solid-svg-icons";
+import { faTwitterSquare } from "@fortawesome/free-brands-svg-icons";
 import ExtLink from "./library/ExtLink";
+import Icon from "./library/Icon";
 
 const UserCard = ({ user }) => {
   if (user.avatar_url) {
@@ -14,20 +22,35 @@ const UserCard = ({ user }) => {
             <Username>{`(${user.login})`}</Username>
           </Nametag>
           <Block>
-            {user.blog && <ExtLink href={user.blog}>website</ExtLink>}
+            {user.blog && (
+              <ExtLink href={user.blog}>
+                <Icon icon={faWindowMaximize} size={"1.4rem"} /> website
+              </ExtLink>
+            )}
 
             {user.twitter_username && (
               <ExtLink href={`https://twitter.com/${user.twitter_username}`}>
+                <Icon icon={faTwitterSquare} size={"1.4rem"} />{" "}
                 {`@${user.twitter_username}`}
               </ExtLink>
             )}
           </Block>
           <Block>
-            <Text>{`${user.followers} followers`}</Text>
-            <Text>{`${user.following} following`}</Text>
+            <Text>
+              {" "}
+              <Icon icon={faUsers} size={"1.4rem"} />{" "}
+              {`${user.followers} followers`}
+            </Text>
+            <Text>
+              <Icon icon={faUserFriends} size={"1.4rem"} />{" "}
+              {`${user.following} following`}
+            </Text>
           </Block>
           <Block>
-            <Text>{`${user.public_repos} public repos`}</Text>
+            <Text>
+              <Icon icon={faCodeBranch} size={"1.4rem"} />{" "}
+              {`${user.public_repos} public repos`}
+            </Text>
           </Block>
         </Card>
       </CardContainer>

@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGitAlt } from "@fortawesome/free-brands-svg-icons";
 
 import Search from "./Search";
+import Icon from "../library/Icon";
 
 const Header = () => {
   return (
     <Container>
       <Title>
-        <Icon icon={faGitAlt}></Icon>
+        <Icon icon={faGitAlt} size={"4rem"}></Icon>
         <h1>git_explorer</h1>
       </Title>
       <Search></Search>
@@ -33,11 +33,6 @@ const Title = styled.div`
 
   h1 {
     font-size: 3rem;
-    margin: 0;
+    margin: 0 0 0 1rem;
   }
-`;
-
-const Icon = styled(FontAwesomeIcon)`
-  font-size: 4rem;
-  margin-right: 1rem;
 `;
