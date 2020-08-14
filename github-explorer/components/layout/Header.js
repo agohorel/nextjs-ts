@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <Container>
       <Title>
-        <Icon icon={faGitAlt} size={"4rem"}></Icon>
+        <Icon icon={faGitAlt} size={"8x"}></Icon>
         <h1>git_explorer</h1>
       </Title>
       <Search></Search>
