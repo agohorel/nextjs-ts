@@ -4,16 +4,19 @@ import { useSelector } from "react-redux";
 import Layout from "../components/layout/Layout";
 import UserCard from "../components/UserCard";
 import Followers from "../components/followers/Followers";
+import GetStarted from "../components/GetStarted";
 
 const github = () => {
   const github_data = useSelector((state) => state.github);
-  console.log(github_data);
+  const hasData = Object.keys(github_data.user).length ? true : false;
 
   return (
     <Layout>
+      {!hasData && !github_data.loading && <GetStarted></GetStarted>}
+
       {github_data.loading && <p>LOADING...</p>}
 
-      {!github_data.loading && (
+      {!github_data.loading && github_data.user && (
         <UserCard
           user={github_data.user}
           commits={github_data.commits}

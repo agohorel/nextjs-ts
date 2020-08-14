@@ -8,7 +8,7 @@ const theme = {
     darkgrey: "#313233",
     midgrey: "#545657",
     lightgrey: "#8B8D8E",
-    offwhite: "#D1D4C9",
+    offwhite: "#e6e6e6",
     success: "#2E954B",
     warning: "#C8804C",
     failure: "#C84C4C",
@@ -26,6 +26,7 @@ const theme = {
     buttonPadding: "6px 10px",
     layoutPadding: "6rem",
     gridGap: "2rem",
+    borderRadius: "3px",
   },
 };
 
