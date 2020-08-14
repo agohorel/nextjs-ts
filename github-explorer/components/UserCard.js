@@ -13,6 +13,8 @@ import ExtLink from "./library/ExtLink";
 import Icon from "./library/Icon";
 
 const UserCard = ({ user, commits }) => {
+  const commit_count = commits.repos ? Object.keys(commits.repos).length : 0;
+
   if (user.avatar_url) {
     return (
       <CardContainer>
@@ -55,8 +57,7 @@ const UserCard = ({ user, commits }) => {
           </Text>
 
           <Text>
-            <Icon icon={faGitAlt} size={"1x"} />{" "}
-            {`in ${Object.keys(commits.repos).length} repos`}
+            <Icon icon={faGitAlt} size={"1x"} /> {`in ${commit_count} repos`}
           </Text>
         </Card>
       </CardContainer>

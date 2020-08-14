@@ -13,7 +13,7 @@ const github = () => {
     <Layout>
       {github_data.loading && <p>LOADING...</p>}
 
-      {github_data.user && (
+      {!github_data.loading && (
         <UserCard
           user={github_data.user}
           commits={github_data.commits}
