@@ -1,10 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+
+import { fetchUser, fetchRepos, fetchUserFollowers } from "../../actions";
 
 const FollowerCard = ({ follower }) => {
-  console.log(follower);
+  const dispatch = useDispatch();
+
+  const searchUser = async (username) => {
+    dispatch(fetchUser(username));
+    dispatch(fetchRepos(username));
+    dispatch(fetchUserFollowers(username));
+  };
+
   return (
-    <Card>
+    <Card onClick={() => searchUser(follower.login)}>
       <Overlay>
         <Username>{follower.login}</Username>
       </Overlay>
@@ -36,6 +46,7 @@ const Card = styled.div`
 
   :hover {
     transform: translateY(-10px);
+    cursor: pointer;
   }
 `;
 
