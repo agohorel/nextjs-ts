@@ -4,30 +4,32 @@ import styled from "styled-components";
 import ExtLink from "./library/ExtLink";
 
 const UserCard = ({ user }) => {
-  return (
-    <CardContainer>
-      <Card>
-        <Avatar src={user.avatar_url}></Avatar>
-        <Nametag>
-          <Name>{user.name}</Name>
-          <Username>{`(${user.login})`}</Username>
-        </Nametag>
-        <Block>
-          <ExtLink href={user.blog}>website</ExtLink>
-          <ExtLink href={`https://twitter.com/${user.twitter_username}`}>
-            {`@${user.twitter_username}`}
-          </ExtLink>
-        </Block>
-        <Block>
-          <Text>{`${user.followers} followers`}</Text>
-          <Text>{`${user.following} following`}</Text>
-        </Block>
-        <Block>
-          <Text>{`${user.public_repos} public repos`}</Text>
-        </Block>
-      </Card>
-    </CardContainer>
-  );
+  if (user.avatar_url) {
+    return (
+      <CardContainer>
+        <Card>
+          <Avatar src={user.avatar_url}></Avatar>
+          <Nametag>
+            <Name>{user.name}</Name>
+            <Username>{`(${user.login})`}</Username>
+          </Nametag>
+          <Block>
+            <ExtLink href={user.blog}>website</ExtLink>
+            <ExtLink href={`https://twitter.com/${user.twitter_username}`}>
+              {`@${user.twitter_username}`}
+            </ExtLink>
+          </Block>
+          <Block>
+            <Text>{`${user.followers} followers`}</Text>
+            <Text>{`${user.following} following`}</Text>
+          </Block>
+          <Block>
+            <Text>{`${user.public_repos} public repos`}</Text>
+          </Block>
+        </Card>
+      </CardContainer>
+    );
+  } else return null;
 };
 
 export default UserCard;
