@@ -8,6 +8,7 @@ const initialGithubState = {
   user: {},
   followers: [],
   repos: [],
+  commits: [],
 };
 
 // GITHUB REDUCER
@@ -16,6 +17,7 @@ const githubReducer = (state = initialGithubState, { type, payload }) => {
     case types.FETCH_USER_LOADING:
     case types.FETCH_FOLLOWERS_LOADING:
     case types.FETCH_REPOS_LOADING:
+    case types.FETCH_COMMITS_LOADING:
       return {
         ...state,
         loading: true,
@@ -42,9 +44,17 @@ const githubReducer = (state = initialGithubState, { type, payload }) => {
         repos: payload,
       };
 
+    case types.FETCH_COMMITS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        commits: payload,
+      };
+
     case types.FETCH_USER_FAILURE:
     case types.FETCH_FOLLOWERS_FAILURE:
     case types.FETCH_REPOS_FAILURE:
+    case types.FETCH_COMMITS_FAILURE:
       return {
         ...state,
         loading: false,
