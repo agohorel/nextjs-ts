@@ -65,3 +65,16 @@ function countCommits(data, username) {
 
   return { commits, repos };
 }
+
+export const fetchRandomUser = () => async (dispatch) => {
+  dispatch({ type: types.FETCH_RANDOM_USER_LOADING });
+  try {
+    const random_index = Math.floor(Math.random() * 10000000);
+    const res = await axiosWithAuth().get(`users?since=${random_index}`);
+    const random_user = res.data[Math.floor(Math.random() * res.data.length)];
+    dispatch({ type: types.FETCH_RANDOM_USER_SUCCESS, payload: random_user });
+  } catch (error) {
+    console.error(error);
+    dispatch({ type: types.FETCH_RANDOM_USER_FAILURE, payload: error });
+  }
+};
