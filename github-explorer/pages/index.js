@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { fetchUser, fetchRepos, fetchUserFollowers } from "../actions";
 
 import Layout from "../components/layout/Layout";
 import UserCard from "../components/UserCard";
@@ -8,7 +7,6 @@ import Followers from "../components/followers/Followers";
 
 const github = () => {
   const github_data = useSelector((state) => state.github);
-
   console.log(github_data);
 
   return (

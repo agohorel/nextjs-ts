@@ -17,41 +17,37 @@ const UserCard = ({ user }) => {
       <CardContainer>
         <Card>
           <Avatar src={user.avatar_url}></Avatar>
-          <Nametag>
-            <Name>{user.name}</Name>
-            <Username>{`(${user.login})`}</Username>
-          </Nametag>
-          <Block>
-            {user.blog && (
-              <ExtLink href={user.blog}>
-                <Icon icon={faWindowMaximize} size={"1.4rem"} /> website
-              </ExtLink>
-            )}
 
-            {user.twitter_username && (
-              <ExtLink href={`https://twitter.com/${user.twitter_username}`}>
-                <Icon icon={faTwitterSquare} size={"1.4rem"} />{" "}
-                {`@${user.twitter_username}`}
-              </ExtLink>
-            )}
-          </Block>
-          <Block>
-            <Text>
-              {" "}
-              <Icon icon={faUsers} size={"1.4rem"} />{" "}
-              {`${user.followers} followers`}
-            </Text>
-            <Text>
-              <Icon icon={faUserFriends} size={"1.4rem"} />{" "}
-              {`${user.following} following`}
-            </Text>
-          </Block>
-          <Block>
-            <Text>
-              <Icon icon={faCodeBranch} size={"1.4rem"} />{" "}
-              {`${user.public_repos} public repos`}
-            </Text>
-          </Block>
+          <Name>{user.login}</Name>
+
+          {user.blog && (
+            <ExtLink href={user.blog}>
+              <Icon icon={faWindowMaximize} size={"1.4rem"} /> website
+            </ExtLink>
+          )}
+
+          {user.twitter_username && (
+            <ExtLink href={`https://twitter.com/${user.twitter_username}`}>
+              <Icon icon={faTwitterSquare} size={"1.4rem"} />{" "}
+              {`@${user.twitter_username}`}
+            </ExtLink>
+          )}
+
+          <Text>
+            {" "}
+            <Icon icon={faUsers} size={"1.4rem"} />{" "}
+            {`${user.followers} followers`}
+          </Text>
+
+          <Text>
+            <Icon icon={faUserFriends} size={"1.4rem"} />{" "}
+            {`${user.following} following`}
+          </Text>
+
+          <Text>
+            <Icon icon={faCodeBranch} size={"1.4rem"} />{" "}
+            {`${user.public_repos} public repos`}
+          </Text>
         </Card>
       </CardContainer>
     );
@@ -67,7 +63,7 @@ const CardContainer = styled.div`
 
 const Card = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   grid-gap: ${({ theme: { measurements } }) => measurements.gridGap};
   align-items: baseline;
 `;
@@ -75,22 +71,11 @@ const Card = styled.div`
 const Avatar = styled.img`
   border-radius: 50%;
   width: 200px;
-  grid-column: span 4;
-`;
-
-const Nametag = styled.div`
-  display: flex;
-  align-items: baseline;
+  grid-column: span 8;
 `;
 
 const Name = styled.h2`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.large};
-`;
-
-const Username = styled.h4`
-  margin-left: 0.5rem;
-  color: #777;
-  font-size: ${({ theme: { fontSizes } }) => fontSizes.medium};
 `;
 
 const Block = styled.div`

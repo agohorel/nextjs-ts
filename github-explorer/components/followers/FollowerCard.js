@@ -2,15 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
-import { fetchUser, fetchRepos, fetchUserFollowers } from "../../actions";
+import {
+  fetchUser,
+  fetchUserRepos,
+  fetchUserFollowers,
+  fetchUserCommits,
+} from "../../actions";
 
 const FollowerCard = ({ follower }) => {
   const dispatch = useDispatch();
 
   const searchUser = async (username) => {
     dispatch(fetchUser(username));
-    dispatch(fetchRepos(username));
+    dispatch(fetchUserRepos(username));
     dispatch(fetchUserFollowers(username));
+    dispatch(fetchUserCommits(username));
   };
 
   return (
