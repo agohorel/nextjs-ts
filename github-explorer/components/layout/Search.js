@@ -46,7 +46,10 @@ export default Search;
 
 const Form = styled.form``;
 
-const Input = styled.input``;
+const Input = styled.input`
+  border: 1px solid ${({ theme: { colors } }) => colors.blackish};
+  padding: ${({ theme: { measurements } }) => measurements.inputPadding};
+`;
 
 const Label = styled.label`
   display: none;

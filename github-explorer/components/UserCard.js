@@ -35,7 +35,7 @@ const UserCard = ({ user }) => {
 export default UserCard;
 
 const CardContainer = styled.div`
-  padding: 3rem;
+  padding: ${({ theme: { measurements } }) => measurements.layoutPadding};
 `;
 
 const Card = styled.div`
@@ -56,11 +56,14 @@ const Nametag = styled.div`
   align-items: baseline;
 `;
 
-const Name = styled.h2``;
+const Name = styled.h2`
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.large};
+`;
 
 const Username = styled.h4`
   margin-left: 0.5rem;
   color: #777;
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.medium};
 `;
 
 const Block = styled.div`
@@ -72,6 +75,8 @@ const Block = styled.div`
 `;
 
 const Text = styled.p`
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.medium};
+
   :not(:last-child) {
     margin-right: 1rem;
   }

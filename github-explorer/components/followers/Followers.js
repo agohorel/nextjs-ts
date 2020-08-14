@@ -18,7 +18,7 @@ export default Followers;
 const FollowersContainer = styled.div`
   display: grid;
   max-width: 100vw;
-  padding: 3rem;
+  padding: ${({ theme: { measurements } }) => measurements.layoutPadding};
   grid-gap: 2rem;
   grid-template-columns: repeat(8, 1fr);
 `;

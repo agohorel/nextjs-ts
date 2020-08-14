@@ -44,6 +44,10 @@ const Card = styled.div`
     max-height: 100%;
   }
 
+  :hover h4 {
+    transform: scale(1.5);
+  }
+
   :hover {
     transform: translateY(-10px);
     cursor: pointer;
@@ -65,7 +69,8 @@ const Overlay = styled.div`
 `;
 
 const Username = styled.h4`
-  font-size: 1rem;
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.small};
+  transition: 0.3s ease-out all;
   margin: 0;
 `;
 

@@ -13,9 +13,14 @@ export default ExtLink;
 
 const ExternalLink = styled.a`
   text-decoration: none;
-  color: black;
+  color: ${({ theme: { colors } }) => colors.blackish};
+  font-size: ${({ theme: { fontSizes } }) => fontSizes.medium};
 
   :visited {
-    color: #555;
+    color: ${({ theme: { colors } }) => colors.midgrey};
+  }
+
+  :hover {
+    color: ${({ theme: { colors } }) => colors.info};
   }
 `;
