@@ -55,11 +55,19 @@ export const fetchUserCommits = (username) => async (dispatch) => {
 };
 
 function countCommits(data, username) {
-  const commits = data
-    .filter(
-      (event) => event.type === "PushEvent" && event.actor.login === username
-    )
-    .reduce((sum, push) => (sum += push.payload.commits.length), 0);
+  const pushes = data.filter(
+    (event) => event.type === "PushEvent" && event.actor.login === username
+  );
 
-  return commits;
+  const commits = pushes.reduce(
+    (sum, push) => (sum += push.payload.commits.length),
+    0
+  );
+
+  const repos = pushes.reduce((all, push) => {
+    all[push.repo.id] = push.repo.url;
+    return all;
+  }, {});
+
+  return { commits, repos };
 }
