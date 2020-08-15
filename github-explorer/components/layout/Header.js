@@ -1,14 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { faGitAlt } from "@fortawesome/free-brands-svg-icons";
+import { useDispatch } from "react-redux";
+
+import { clearCurrentUser } from "../../actions";
 
 import Search from "./Search";
 import Icon from "../library/Icon";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   return (
     <Container>
-      <Title>
+      <Title onClick={() => dispatch(clearCurrentUser())}>
         <Icon icon={faGitAlt} size={"8x"}></Icon>
         <h1>git_explorer</h1>
       </Title>
@@ -34,5 +39,23 @@ const Title = styled.div`
   h1 {
     font-size: 3rem;
     margin: 0 0 0 1rem;
+    transition: 0.1s ease-out;
+  }
+
+  svg {
+    transition: 0.2s ease-out;
+  }
+
+  :hover {
+    cursor: pointer;
+
+    h1 {
+      letter-spacing: 0.25px;
+      color: ${({ theme: { colors } }) => colors.info};
+    }
+
+    svg {
+      transform: scale(1.1);
+    }
   }
 `;

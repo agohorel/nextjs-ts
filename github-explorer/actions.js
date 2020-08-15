@@ -31,6 +31,10 @@ export const fetchRandomUser = () => async (dispatch) => {
   }
 };
 
+export const clearCurrentUser = () => (dispatch) => {
+  dispatch({ type: types.CLEAR_CURRENT_USER });
+};
+
 // helpers
 
 async function getUserData(username) {

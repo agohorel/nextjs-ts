@@ -41,6 +41,15 @@ const githubReducer = (state = initialGithubState, { type, payload }) => {
         error: payload,
       };
 
+    case types.CLEAR_CURRENT_USER:
+      return {
+        ...state,
+        user: {},
+        followers: [],
+        repos: [],
+        commits: [],
+      };
+
     default:
       return state;
   }

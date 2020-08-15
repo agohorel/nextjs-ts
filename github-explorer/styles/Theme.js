@@ -10,9 +10,9 @@ const theme = {
     lightgrey: "#8B8D8E",
     offwhite: "#e6e6e6",
     success: "#23db57",
-    warning: "#C8804C",
+    warning: "#e3541b",
     failure: "#C84C4C",
-    info: "#289FD2",
+    info: "#13aced",
   },
   fonts: ["Fira Code", "Roboto"],
   fontSizes: {
