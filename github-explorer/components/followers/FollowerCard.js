@@ -60,6 +60,7 @@ const Overlay = styled.div`
   background-color: rgba(255, 255, 255, 0.5);
   max-height: 35px;
   transition: 0.2s ease-out all;
+  z-index: 1;
 `;
 
 const Username = styled.h4`
@@ -73,5 +74,5 @@ const Avatar = styled.img`
   border-radius: 3px;
   transition: 0.25s ease-out all;
   filter: grayscale(0.85);
-  z-index: -100;
+  z-index: 0;
 `;

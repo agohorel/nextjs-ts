@@ -7,12 +7,12 @@ import Followers from "../components/followers/Followers";
 import GetStarted from "../components/GetStarted";
 import Loader from "../components/layout/Loader";
 
-const github = () => {
+const github = ({ toggleTheme }) => {
   const github_data = useSelector((state) => state.github);
   const hasData = Object.keys(github_data.user).length ? true : false;
 
   return (
-    <Layout>
+    <Layout toggleTheme={toggleTheme}>
       {!hasData && !github_data.loading && <GetStarted></GetStarted>}
 
       {github_data.loading && <Loader type="Puff" height="40vh"></Loader>}

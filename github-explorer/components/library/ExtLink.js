@@ -13,11 +13,11 @@ export default ExtLink;
 
 const ExternalLink = styled.a`
   text-decoration: none;
-  color: ${({ theme: { colors } }) => colors.blackish};
+  color: ${({ theme: { colors } }) => colors.scale_0};
   font-size: ${({ theme: { fontSizes } }) => fontSizes.medium};
 
   :visited {
-    color: ${({ theme: { colors } }) => colors.midgrey};
+    color: ${({ theme: { colors } }) => colors.scale_3};
   }
 
   :hover {

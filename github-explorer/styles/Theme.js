@@ -1,14 +1,15 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 
-const theme = {
+const lightTheme = {
   colors: {
-    blackish: "#0b0b0b",
-    nearblack: "#2b2b2b",
-    darkgrey: "#313233",
-    midgrey: "#545657",
-    lightgrey: "#8B8D8E",
-    offwhite: "#e6e6e6",
+    scale_0: "#0b0b0b",
+    scale_1: "#2b2b2b",
+    scale_2: "#313233",
+    scale_3: "#545657",
+    scale_4: "#8B8D8E",
+    scale_5: "#e6e6e6",
+    scale_6: "#ffffff",
     success: "#23db57",
     warning: "#e3541b",
     failure: "#C84C4C",
@@ -30,8 +31,25 @@ const theme = {
   },
 };
 
-const Theme = ({ children }) => (
+const darkTheme = {
+  ...lightTheme,
+  colors: {
+    scale_6: "#0b0b0b",
+    scale_5: "#2b2b2b",
+    scale_4: "#313233",
+    scale_3: "#545657",
+    scale_2: "#8B8D8E",
+    scale_1: "#e6e6e6",
+    scale_0: "#ffffff",
+    success: "#23db57",
+    warning: "#e3541b",
+    failure: "#C84C4C",
+    info: "#13aced",
+  },
+};
+
+const Theme = ({ theme, children }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>
 );
 
-export default Theme;
+export { Theme, lightTheme, darkTheme };

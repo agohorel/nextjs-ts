@@ -36,8 +36,8 @@ const Banner = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: ${({ theme: { colors } }) => colors.offwhite};
-  border: 1px solid ${({ theme: { colors } }) => colors.blackish};
+  background: ${({ theme: { colors } }) => colors.scale_5};
+  border: 1px solid ${({ theme: { colors } }) => colors.scale_0};
   border-radius: ${({ theme: { measurements } }) => measurements.borderRadius};
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
   padding: 3rem;

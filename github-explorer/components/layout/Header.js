@@ -6,9 +6,10 @@ import { useDispatch } from "react-redux";
 import { clearCurrentUser } from "../../actions";
 
 import Search from "./Search";
+import ThemeToggle from "./ThemeToggle";
 import Icon from "../library/Icon";
 
-const Header = () => {
+const Header = ({ toggleTheme }) => {
   const dispatch = useDispatch();
 
   return (
@@ -17,7 +18,10 @@ const Header = () => {
         <Icon icon={faGitAlt} size={"8x"}></Icon>
         <h1>git_explorer</h1>
       </Title>
-      <Search></Search>
+      <RightPanel>
+        <Search></Search>
+        <ThemeToggle toggleTheme={toggleTheme}></ThemeToggle>
+      </RightPanel>
     </Container>
   );
 };
@@ -58,4 +62,9 @@ const Title = styled.div`
       transform: scale(1.1);
     }
   }
+`;
+
+const RightPanel = styled.div`
+  display: flex;
+  align-items: center;
 `;

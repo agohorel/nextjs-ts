@@ -8,16 +8,17 @@ const FormButton = ({ children }) => {
 export default FormButton;
 
 const Button = styled.button`
-  background-color: ${({ theme: { colors } }) => colors.blackish};
-  color: ${({ theme: { colors } }) => colors.offwhite};
+  background-color: ${({ theme: { colors } }) => colors.scale_0};
+  color: ${({ theme: { colors } }) => colors.scale_5};
   border: none;
   padding: ${({ theme: { measurements } }) => measurements.buttonPadding};
   margin: 1rem;
   border-radius: 3px;
   transition: 0.2s ease-out all;
+  font-family: "Roboto";
 
   :hover {
     cursor: pointer;
-    background-color: ${({ theme: { colors } }) => colors.darkgrey};
+    background-color: ${({ theme: { colors } }) => colors.scale_2};
   }
 `;

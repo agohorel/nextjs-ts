@@ -2,10 +2,10 @@ import React from "react";
 
 import Header from "./Header";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, toggleTheme }) => {
   return (
     <>
-      <Header></Header>
+      <Header toggleTheme={toggleTheme}></Header>
       {children}
     </>
   );

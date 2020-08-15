@@ -41,8 +41,11 @@ export default Search;
 const Form = styled.form``;
 
 const Input = styled.input`
-  border: 1px solid ${({ theme: { colors } }) => colors.blackish};
+  border: 1px solid ${({ theme: { colors } }) => colors.scale_2};
+  background-color: ${({ theme: { colors } }) => colors.scale_6};
+  color: ${({ theme: { colors } }) => colors.scale_1};
   padding: ${({ theme: { measurements } }) => measurements.inputPadding};
+  font-family: "Roboto";
 `;
 
 const Label = styled.label`
