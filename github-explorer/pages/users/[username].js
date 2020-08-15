@@ -1,5 +1,7 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUser } from "../../actions";
+import { useRouter } from "next/router";
 
 import Layout from "../../components/layout/Layout";
 import UserCard from "../../components/UserCard";
@@ -7,7 +9,17 @@ import Followers from "../../components/followers/Followers";
 import Loader from "../../components/layout/Loader";
 
 const users = ({ toggleTheme }) => {
+  const router = useRouter();
+  const dispatch = useDispatch();
   const githubData = useSelector((state) => state.github);
+  const username = router.query.username;
+
+  // fetch user from path only if no existing data
+  useEffect(() => {
+    if (!Object.keys(githubData.user).length && username) {
+      dispatch(fetchUser(username));
+    }
+  }, [username]);
 
   return (
     <Layout toggleTheme={toggleTheme}>
