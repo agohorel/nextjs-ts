@@ -13,6 +13,7 @@ import Icon from "../library/Icon";
 const Header = ({ toggleTheme }) => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const path = router.query;
 
   const goHome = () => {
     dispatch(clearCurrentUser());
@@ -26,7 +27,7 @@ const Header = ({ toggleTheme }) => {
         <h1>git_explorer</h1>
       </Title>
       <RightPanel>
-        <Search></Search>
+        {path.username && <Search></Search>}
         <ThemeToggle toggleTheme={toggleTheme}></ThemeToggle>
       </RightPanel>
     </Container>
