@@ -84,18 +84,11 @@ const Avatar = styled.img`
   border-radius: 50%;
   width: 200px;
   grid-column: span 8;
+  box-shadow: 0px 2px 4px ${({ theme: { colors } }) => colors.boxShadow};
 `;
 
 const Name = styled.h2`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.large};
-`;
-
-const Block = styled.div`
-  display: flex;
-
-  a:not(:last-of-type) {
-    margin-right: 1rem;
-  }
 `;
 
 const Text = styled.p`
