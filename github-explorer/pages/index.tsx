@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../components/layout/Layout";
 import GetStarted from "../components/GetStarted";
 
-const github = ({ toggleTheme }) => {
+const github = ({ toggleTheme }): Object => {
   return (
     <Layout toggleTheme={toggleTheme}>
       <GetStarted></GetStarted>
