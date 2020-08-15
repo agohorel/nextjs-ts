@@ -10,7 +10,11 @@ import Search from "./Search";
 import ThemeToggle from "./ThemeToggle";
 import Icon from "../library/Icon";
 
-const Header = ({ toggleTheme }) => {
+interface Props {
+  toggleTheme: () => void;
+}
+
+const Header: React.FC<Props> = ({ toggleTheme }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const path = router.query;

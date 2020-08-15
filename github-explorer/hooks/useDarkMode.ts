@@ -8,7 +8,7 @@ export const useDarkMode = () => {
     setTheme(mode);
   };
 
-  const toggleTheme = () => {
+  const toggleTheme = (): void => {
     theme === "light" ? setMode("dark") : setMode("light");
   };
 
