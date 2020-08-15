@@ -14,9 +14,9 @@ const users = ({ toggleTheme }) => {
   const githubData = useSelector((state) => state.github);
   const username = router.query.username;
 
-  // fetch user from path only if no existing data
+  // fetch user from path only if no existing data for user
   useEffect(() => {
-    if (!Object.keys(githubData.user).length && username) {
+    if (username && githubData.user.login !== username) {
       dispatch(fetchUser(username));
     }
   }, [username]);
