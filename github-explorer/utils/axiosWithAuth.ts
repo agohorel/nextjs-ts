@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios, { AxiosInstance } from "axios";
 import config from "../config";
 
-const axiosWithAuth = () => {
+const axiosWithAuth = (): AxiosInstance => {
   return axios.create({
     headers: {
       authorization: `Bearer ${config.github_token}`,

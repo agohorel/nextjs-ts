@@ -4,7 +4,11 @@ import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
 
 import Icon from "../library/Icon";
 
-const ThemeToggle = ({ toggleTheme }) => {
+interface Props {
+  toggleTheme: () => void;
+}
+
+const ThemeToggle: React.FC<Props> = ({ toggleTheme }) => {
   let currentTheme = "light";
 
   if (process.browser) {
@@ -14,9 +18,9 @@ const ThemeToggle = ({ toggleTheme }) => {
   return (
     <ThemeIcon onClick={toggleTheme}>
       {currentTheme === "light" ? (
-        <Icon size="4x" icon={faMoon} onClick={toggleTheme}></Icon>
+        <Icon size="4x" icon={faMoon}></Icon>
       ) : (
-        <Icon size="4x" icon={faSun} onClick={toggleTheme}></Icon>
+        <Icon size="4x" icon={faSun}></Icon>
       )}
     </ThemeIcon>
   );
