@@ -6,8 +6,6 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { useDarkMode } from "../hooks/useDarkMode";
 import { Theme, lightTheme, darkTheme } from "../styles/Theme";
 
-console.log(lightTheme, darkTheme);
-
 export default function App({ Component, pageProps }) {
   const store = useStore(pageProps.initialReduxState);
   const [theme, toggleTheme] = useDarkMode();

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 import { fetchRandomUser } from "../actions";
 
@@ -9,6 +10,7 @@ import Button from "./library/Button";
 
 const GetStarted = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
 
   return (
     <Container>
@@ -16,7 +18,7 @@ const GetStarted = () => {
         <CTA>Get started by searching for a GitHub user by name!</CTA>
         <Search></Search>
         <SubHeader>Or select a user at random:</SubHeader>
-        <div onClick={() => dispatch(fetchRandomUser())}>
+        <div onClick={() => dispatch(fetchRandomUser(router))}>
           <Button>search random user</Button>
         </div>
       </Banner>

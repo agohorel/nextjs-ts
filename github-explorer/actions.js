@@ -5,7 +5,6 @@ export const fetchUser = (username) => async (dispatch) => {
   dispatch({ type: types.FETCH_USER_LOADING });
   try {
     const payload = await getUserData(username);
-
     dispatch({ type: types.FETCH_USER_SUCCESS, payload });
   } catch (error) {
     console.error(error);
@@ -13,7 +12,7 @@ export const fetchUser = (username) => async (dispatch) => {
   }
 };
 
-export const fetchRandomUser = () => async (dispatch) => {
+export const fetchRandomUser = (router) => async (dispatch) => {
   dispatch({ type: types.FETCH_RANDOM_USER_LOADING });
   try {
     const random_index = Math.floor(Math.random() * 10000000);
@@ -22,9 +21,9 @@ export const fetchRandomUser = () => async (dispatch) => {
 
     const payload = await getUserData(random_user.login);
 
-    console.log(random_user, payload);
-
     dispatch({ type: types.FETCH_RANDOM_USER_SUCCESS, payload });
+
+    router.push("/users/[username]", `/users/${random_user.login}`);
   } catch (error) {
     console.error(error);
     dispatch({ type: types.FETCH_RANDOM_USER_FAILURE, payload: error });

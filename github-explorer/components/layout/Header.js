@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { faGitAlt } from "@fortawesome/free-brands-svg-icons";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 import { clearCurrentUser } from "../../actions";
 
@@ -11,10 +12,16 @@ import Icon from "../library/Icon";
 
 const Header = ({ toggleTheme }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  const goHome = () => {
+    dispatch(clearCurrentUser());
+    router.push("/");
+  };
 
   return (
     <Container>
-      <Title onClick={() => dispatch(clearCurrentUser())}>
+      <Title onClick={goHome}>
         <Icon icon={faGitAlt} size={"8x"}></Icon>
         <h1>git_explorer</h1>
       </Title>

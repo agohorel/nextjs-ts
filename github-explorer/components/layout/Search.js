@@ -4,12 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { fetchUser } from "../../actions";
+import { useRouter } from "next/router";
 
 import Button from "../library/Button";
 
 const Search = () => {
   const [username, setUsername] = useState("");
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const handleInput = (e) => {
     setUsername(e.target.value);
@@ -18,6 +20,7 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(fetchUser(username));
+    router.push(`/users/[username]`, `/users/${username}`);
   };
 
   return (

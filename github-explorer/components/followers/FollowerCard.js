@@ -1,14 +1,21 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/router";
 
 import { fetchUser } from "../../actions";
 
 const FollowerCard = ({ follower }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
+
+  const loadFollower = (username) => {
+    dispatch(fetchUser(username));
+    router.push("/users/[username]", `/users/${username}`);
+  };
 
   return (
-    <Card onClick={() => dispatch(fetchUser(follower.login))}>
+    <Card onClick={() => loadFollower(follower.login)}>
       <Overlay>
         <Username>{follower.login}</Username>
       </Overlay>
