@@ -14,6 +14,8 @@ const lightTheme = {
     warning: "#e3541b",
     failure: "#C84C4C",
     info: "#13aced",
+    overlay: "rgba(255, 255, 255, 0.5)",
+    boxShadow: "rgba(0, 0, 0, .25)",
   },
   fonts: ["Fira Code", "Roboto"],
   fontSizes: {
@@ -45,6 +47,8 @@ const darkTheme = {
     warning: "#e3541b",
     failure: "#C84C4C",
     info: "#13aced",
+    overlay: "rgba(0, 0, 0, 0.5)",
+    boxShadow: "rgba(175, 175, 175, .2)",
   },
 };
 

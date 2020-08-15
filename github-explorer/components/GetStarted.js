@@ -39,7 +39,8 @@ const Banner = styled.main`
   background: ${({ theme: { colors } }) => colors.scale_5};
   border: 1px solid ${({ theme: { colors } }) => colors.scale_0};
   border-radius: ${({ theme: { measurements } }) => measurements.borderRadius};
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+  box-shadow: 0px 2px 4px ${({ theme: { colors } }) => colors.boxShadow};
   padding: 3rem;
 `;
 

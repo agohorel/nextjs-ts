@@ -25,7 +25,7 @@ const Card = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 1px 3px ${({ theme: { colors } }) => colors.boxShadow};
   overflow: hidden;
   transition: 0.15s ease-out all;
 
@@ -39,7 +39,7 @@ const Card = styled.div`
   }
 
   :hover h4 {
-    transform: scale(1.5);
+    transform: scale(1.35);
   }
 
   :hover {
@@ -57,7 +57,7 @@ const Overlay = styled.div`
   width: 100%;
   justify-content: center;
   height: 1000px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: ${({ theme: { colors } }) => colors.overlay};
   max-height: 35px;
   transition: 0.2s ease-out all;
   z-index: 1;
