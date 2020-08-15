@@ -9,7 +9,7 @@ const theme = {
     midgrey: "#545657",
     lightgrey: "#8B8D8E",
     offwhite: "#e6e6e6",
-    success: "#2E954B",
+    success: "#23db57",
     warning: "#C8804C",
     failure: "#C84C4C",
     info: "#289FD2",

@@ -5,6 +5,7 @@ import Layout from "../components/layout/Layout";
 import UserCard from "../components/UserCard";
 import Followers from "../components/followers/Followers";
 import GetStarted from "../components/GetStarted";
+import Loader from "../components/layout/Loader";
 
 const github = () => {
   const github_data = useSelector((state) => state.github);
@@ -14,7 +15,7 @@ const github = () => {
     <Layout>
       {!hasData && !github_data.loading && <GetStarted></GetStarted>}
 
-      {github_data.loading && <p>LOADING...</p>}
+      {github_data.loading && <Loader type="Puff" height="40vh"></Loader>}
 
       {!github_data.loading && github_data.user && (
         <UserCard
