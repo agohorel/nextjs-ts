@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 
 import Button from "../library/Button";
 
-const Search: React.FC<any> = () => {
+const Search: React.FC = () => {
   const [username, setUsername] = useState<string>("");
   const dispatch = useDispatch();
   const router = useRouter();

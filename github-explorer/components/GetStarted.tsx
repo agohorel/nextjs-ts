@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { useRouter } from "next/router";
+import { useRouter, NextRouter } from "next/router";
 
 import { fetchRandomUser } from "../actions";
 
 import Search from "./layout/Search";
 import Button from "./library/Button";
 
-const GetStarted = () => {
+const GetStarted: React.FC = () => {
   const dispatch = useDispatch();
-  const router = useRouter();
+  const router: NextRouter = useRouter();
 
   return (
     <Container>
