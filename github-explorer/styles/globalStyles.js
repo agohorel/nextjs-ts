@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyles = createGlobalStyle`
-    @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@515&family=Roboto:wght@500&display=swap");
-
     html,
     body {
       padding: 0;

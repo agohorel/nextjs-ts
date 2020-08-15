@@ -2,6 +2,7 @@ import { Provider } from "react-redux";
 import { useStore } from "../store";
 import { GlobalStyles } from "../styles/globalStyles";
 import { AppProps } from "next/app";
+import "../styles/fontImports.css";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 import { useDarkMode } from "../hooks/useDarkMode";
