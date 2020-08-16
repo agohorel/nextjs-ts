@@ -8,16 +8,16 @@ import { useRouter } from "next/router";
 
 import Button from "../library/Button";
 
-const Search = () => {
-  const [username, setUsername] = useState("");
+const Search: React.FC = () => {
+  const [username, setUsername] = useState<string>("");
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const handleInput = (e) => {
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setUsername(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.SyntheticEvent): void => {
     e.preventDefault();
     dispatch(fetchUser(username));
     router.push(`/users/[username]`, `/users/${username}`);

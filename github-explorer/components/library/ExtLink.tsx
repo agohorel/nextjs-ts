@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const ExtLink = ({ href, children }) => {
+interface Props {
+  href: string;
+  children: JSX.Element;
+}
+
+const ExtLink: React.FC<Props> = ({ href, children }) => {
   return (
     <ExternalLink href={href} target="_blank" rel="noopener noreferrer">
       {children}

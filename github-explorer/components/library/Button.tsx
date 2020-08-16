@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const FormButton = ({ children }) => {
+interface Props {
+  children: JSX.Element | string;
+}
+
+const FormButton: React.FC<Props> = ({ children }) => {
   return <Button>{children}</Button>;
 };
 

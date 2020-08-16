@@ -5,7 +5,17 @@ import { useRouter } from "next/router";
 
 import { fetchUser } from "../../actions";
 
-const FollowerCard = ({ follower }) => {
+interface Follower {
+  id: number;
+  login: string;
+  avatar_url: string;
+}
+
+interface Props {
+  follower: Follower;
+}
+
+const FollowerCard: React.FC<Props> = ({ follower }) => {
   const dispatch = useDispatch();
   const router = useRouter();
 

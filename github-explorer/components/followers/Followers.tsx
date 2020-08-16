@@ -5,7 +5,17 @@ import { useSelector } from "react-redux";
 import FollowerCard from "./FollowerCard";
 import { oscillate } from "../../styles/animations";
 
-const Followers = ({ followers }) => {
+interface Follower {
+  id: number;
+  login: string;
+  avatar_url: string;
+}
+
+interface Props {
+  followers: Array<Follower>;
+}
+
+const Followers: React.FC<Props> = ({ followers }) => {
   const github_data = useSelector((state) => state.github);
 
   if (github_data.loading) {

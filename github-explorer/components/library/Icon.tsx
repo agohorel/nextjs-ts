@@ -1,8 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IconProp, SizeProp } from "@fortawesome/fontawesome-svg-core";
 
-const Icon = ({ icon, size = "1 rem" }) => {
+interface Props {
+  icon: IconProp;
+  size: SizeProp;
+}
+
+const Icon: React.FC<Props> = ({ icon, size }) => {
   return <StyledIcon icon={icon} size={size}></StyledIcon>;
 };
 
