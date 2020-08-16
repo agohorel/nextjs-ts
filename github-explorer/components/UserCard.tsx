@@ -100,14 +100,19 @@ const Avatar = styled.img`
   width: 200px;
   grid-column: span 8;
   box-shadow: 0px 2px 4px ${({ theme: { colors } }) => colors.boxShadow};
+  margin-bottom: calc(
+    6rem - ${({ theme: { measurements } }) => measurements.gridGap}
+  );
 `;
 
 const Name = styled.h2`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.large};
+  margin: 0;
 `;
 
 const Text = styled.p`
   font-size: ${({ theme: { fontSizes } }) => fontSizes.medium};
+  margin: 0;
 
   :not(:last-child) {
     margin-right: 1rem;

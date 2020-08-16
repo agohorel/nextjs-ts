@@ -46,7 +46,7 @@ const FollowersContainer = styled.div`
   max-width: 100vw;
   padding: ${({ theme: { measurements } }) => measurements.layoutPadding};
   grid-gap: ${({ theme: { measurements } }) => measurements.gridGap};
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
 `;
 
 const TempCard = styled.img`

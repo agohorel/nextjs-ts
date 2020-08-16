@@ -27,7 +27,7 @@ const lightTheme = {
   measurements: {
     inputPadding: "4px 8px",
     buttonPadding: "6px 10px",
-    layoutPadding: "6rem",
+    layoutPadding: "6rem 12rem",
     gridGap: "2rem",
     borderRadius: "3px",
   },
