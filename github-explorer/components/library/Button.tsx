@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 interface Props {
-  children: JSX.Element | string;
+  children: string | JSX.Element | Array<JSX.Element | string>;
 }
 
 const FormButton: React.FC<Props> = ({ children }) => {

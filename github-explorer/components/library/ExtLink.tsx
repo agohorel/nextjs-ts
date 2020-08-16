@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 interface Props {
   href: string;
-  children: JSX.Element;
+  children: JSX.Element | Array<JSX.Element | string>;
 }
 
 const ExtLink: React.FC<Props> = ({ href, children }) => {
