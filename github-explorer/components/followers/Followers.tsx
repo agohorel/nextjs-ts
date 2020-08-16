@@ -24,7 +24,7 @@ const Followers: React.FC<Props> = ({ followers }) => {
         {Array(16)
           .fill(0)
           .map((card, idx) => {
-            return <TempCard key={idx} />;
+            return <TempCard src={"/temp_grid_item.png"} key={idx} />;
           })}
       </FollowersContainer>
     );
@@ -49,10 +49,8 @@ const FollowersContainer = styled.div`
   grid-template-columns: repeat(8, 1fr);
 `;
 
-const TempCard = styled.div`
-  display: inline-block;
+const TempCard = styled.img`
   width: 100%;
-  height: calc(100vw / 10);
-  background: #333;
+  border-radius: 3px;
   animation: ${oscillate} 0.3s ease-in-out infinite alternate;
 `;

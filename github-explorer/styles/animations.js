@@ -2,10 +2,10 @@ import { keyframes } from "styled-components";
 
 export const oscillate = keyframes`
     from {
-        background-color: #333
+        opacity: 0.5;
     }
     
     to {
-        background-color: #777
+        opacity: 1;
     }
 `;
