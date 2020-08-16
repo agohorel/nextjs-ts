@@ -1,21 +1,25 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchUser } from "../../actions";
-import { useRouter } from "next/router";
+import { useRouter, NextRouter } from "next/router";
 
 import Layout from "../../components/layout/Layout";
 import UserCard from "../../components/UserCard";
 import Followers from "../../components/followers/Followers";
 import Loader from "../../components/layout/Loader";
 
-const users = ({ toggleTheme }) => {
-  const router = useRouter();
+interface Props {
+  toggleTheme: () => void;
+}
+
+const users: React.FC<Props> = ({ toggleTheme }) => {
+  const router: NextRouter = useRouter();
   const dispatch = useDispatch();
   const githubData = useSelector((state) => state.github);
   const username = router.query.username;
 
   // fetch user from path only if no existing data for user
-  useEffect(() => {
+  useEffect((): void => {
     if (username && githubData.user.login !== username) {
       dispatch(fetchUser(username));
     }

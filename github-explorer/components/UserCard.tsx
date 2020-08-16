@@ -12,7 +12,23 @@ import { faTwitterSquare, faGitAlt } from "@fortawesome/free-brands-svg-icons";
 import ExtLink from "./library/ExtLink";
 import Icon from "./library/Icon";
 
-const UserCard = ({ user, commits }) => {
+interface Props {
+  user: {
+    avatar_url: string;
+    blog: string;
+    twitter_username: string;
+    followers: number;
+    login: string;
+    public_repos: number;
+    following: number;
+  };
+  commits: {
+    repos: number;
+    commits: number;
+  };
+}
+
+const UserCard: React.FC<Props> = ({ user, commits }) => {
   const commit_count = commits.repos ? Object.keys(commits.repos).length : 0;
 
   if (user.avatar_url) {
@@ -62,7 +78,6 @@ const UserCard = ({ user, commits }) => {
         </Card>
       </CardContainer>
     );
-    F;
   } else return null;
 };
 
