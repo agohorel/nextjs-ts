@@ -1,12 +1,13 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchUser } from "../../actions";
-import { useRouter, NextRouter } from "next/router";
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchUser } from '../../actions';
+import { useRouter, NextRouter } from 'next/router';
+import Head from 'next/head';
 
-import Layout from "../../components/layout/Layout";
-import UserCard from "../../components/UserCard";
-import Followers from "../../components/followers/Followers";
-import Loader from "../../components/layout/Loader";
+import Layout from '../../components/layout/Layout';
+import UserCard from '../../components/UserCard';
+import Followers from '../../components/followers/Followers';
+import Loader from '../../components/layout/Loader';
 
 interface Props {
   toggleTheme: () => void;
@@ -27,6 +28,9 @@ const users: React.FC<Props> = ({ toggleTheme }) => {
 
   return (
     <Layout toggleTheme={toggleTheme}>
+      <Head>
+        <title>{`git_explorer | ${username}`}</title>
+      </Head>
       {githubData.loading && <Loader type="Puff" height="40vh"></Loader>}
 
       {!githubData.loading && githubData.user && (
