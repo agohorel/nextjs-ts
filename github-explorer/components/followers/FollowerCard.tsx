@@ -1,9 +1,9 @@
-import React from "react";
-import styled from "styled-components";
-import { useDispatch } from "react-redux";
-import { useRouter } from "next/router";
+import React from 'react';
+import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 
-import { fetchUser } from "../../actions";
+import { fetchUser } from '../../actions';
 
 interface Follower {
   id: number;
@@ -21,7 +21,7 @@ const FollowerCard: React.FC<Props> = ({ follower }) => {
 
   const loadFollower = (username) => {
     dispatch(fetchUser(username));
-    router.push("/users/[username]", `/users/${username}`);
+    router.push('/users/[username]', `/users/${username}`);
   };
 
   return (
@@ -37,6 +37,7 @@ const FollowerCard: React.FC<Props> = ({ follower }) => {
 export default FollowerCard;
 
 const Card = styled.div`
+  max-width: 250px;
   position: relative;
   border-radius: 3px;
   display: flex;
