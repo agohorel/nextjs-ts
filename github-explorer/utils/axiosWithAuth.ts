@@ -1,12 +1,13 @@
-import axios, { AxiosInstance } from "axios";
-import config from "../config";
+import axios, { AxiosInstance } from 'axios';
 
 const axiosWithAuth = (): AxiosInstance => {
+  const token = localStorage.getItem('github');
+
   return axios.create({
     headers: {
-      authorization: `Bearer ${config.github_token}`,
+      authorization: `Bearer ${token}`,
     },
-    baseURL: "https://api.github.com/",
+    baseURL: 'https://api.github.com/',
   });
 };
 

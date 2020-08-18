@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
+import axios from 'axios';
 
 import Layout from '../components/layout/Layout';
 import GetStarted from '../components/GetStarted';
@@ -9,6 +10,15 @@ interface Props {
 }
 
 const github: React.FC<Props> = ({ toggleTheme }) => {
+  useEffect(() => {
+    async function getToken() {
+      const response = await axios.get('/api/githubAuth');
+      localStorage.setItem('github', response.data.github_token);
+    }
+
+    getToken();
+  }, []);
+
   return (
     <Layout toggleTheme={toggleTheme}>
       <Head>
