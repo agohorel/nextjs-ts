@@ -1,15 +1,14 @@
-import React from "react";
-import Loader from "react-loader-spinner";
-import styled from "styled-components";
+import React from 'react';
+import Loader from 'react-loader-spinner';
+import styled from 'styled-components';
 
 interface Props {
   type: string;
-  height: string;
 }
 
-const LoaderComponent: React.FC<Props> = ({ type, height }) => {
+const LoaderComponent: React.FC<Props> = ({ type }) => {
   return (
-    <LoaderContainer height={height}>
+    <LoaderContainer>
       <Loader type={type} color="#23db57" height={100} width={100} />
     </LoaderContainer>
   );
@@ -21,5 +20,5 @@ const LoaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${(props) => props.height};
+  height: 40vh;
 `;
