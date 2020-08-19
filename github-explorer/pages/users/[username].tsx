@@ -20,7 +20,7 @@ const users: React.FC<Props> = ({ toggleTheme }) => {
   const username = router.query.username;
 
   // fetch user from path only if no existing data for user
-  useEffect((): void => {
+  useEffect(() => {
     if (username && githubData.user.login !== username) {
       dispatch(fetchUser(username));
     }
@@ -31,7 +31,7 @@ const users: React.FC<Props> = ({ toggleTheme }) => {
       <Head>
         <title>{`git_explorer | ${username}`}</title>
       </Head>
-      {githubData.loading && <Loader type="Puff" height="40vh"></Loader>}
+      {githubData.loading && <Loader type="Puff"></Loader>}
 
       {!githubData.loading && githubData.user && (
         <UserCard

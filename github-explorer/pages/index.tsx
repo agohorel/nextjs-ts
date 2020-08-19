@@ -12,8 +12,10 @@ interface Props {
 const github: React.FC<Props> = ({ toggleTheme }) => {
   useEffect(() => {
     async function getToken() {
-      const response = await axios.get('/api/githubAuth');
-      localStorage.setItem('github', response.data.github_token);
+      if (!sessionStorage.getItem('github')) {
+        const response = await axios.get('/api/githubAuth');
+        sessionStorage.setItem('github', response.data.github_token);
+      }
     }
 
     getToken();

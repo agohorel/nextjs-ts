@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from 'axios';
 
 const axiosWithAuth = (): AxiosInstance => {
-  const token = localStorage.getItem('github');
+  let token = sessionStorage.getItem('github');
 
   return axios.create({
     headers: {
