@@ -1,23 +1,23 @@
-import React from "react";
-import styled from "styled-components";
-import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
+import React from 'react';
+import styled from 'styled-components';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
-import Icon from "../library/Icon";
+import Icon from '../library/Icon';
 
 interface Props {
   toggleTheme: () => void;
 }
 
 const ThemeToggle: React.FC<Props> = ({ toggleTheme }) => {
-  let currentTheme = "light";
+  let currentTheme = 'light';
 
   if (process.browser) {
-    currentTheme = window.localStorage.getItem("theme");
+    currentTheme = window.localStorage.getItem('theme');
   }
 
   return (
     <ThemeIcon onClick={toggleTheme}>
-      {currentTheme === "light" ? (
+      {currentTheme === 'light' ? (
         <Icon size="4x" icon={faMoon}></Icon>
       ) : (
         <Icon size="4x" icon={faSun}></Icon>
@@ -40,5 +40,9 @@ const ThemeIcon = styled.div`
 
   :hover svg {
     color: ${({ theme: { colors } }) => colors.scale_4};
+  }
+
+  [data-icon='sun']:hover {
+    color: #fcba03;
   }
 `;
