@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUser } from '../../actions';
+import { fetchToken } from '../../utils/fetchToken';
 import { useRouter, NextRouter } from 'next/router';
 import Head from 'next/head';
 
@@ -21,9 +22,14 @@ const users: React.FC<Props> = ({ toggleTheme }) => {
 
   // fetch user from path only if no existing data for user
   useEffect(() => {
-    if (username && githubData.user.login !== username) {
-      dispatch(fetchUser(username));
+    async function getUser() {
+      if (username && githubData.user.login !== username) {
+        await fetchToken();
+        dispatch(fetchUser(username));
+      }
     }
+
+    getUser();
   }, [username]);
 
   return (
